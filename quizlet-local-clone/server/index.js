@@ -91,7 +91,13 @@ app.delete('/api/sets/:id', (req, res) => {
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+// Catch-all handler: send back React's index.html file for client-side routing
+// This should come after API routes to avoid interfering with them
 app.get('*', (req, res) => {
+  // Don't serve index.html for API routes that weren't found
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API endpoint not found' });
+  }
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
