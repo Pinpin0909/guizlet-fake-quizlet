@@ -23,37 +23,66 @@ Clone local de Quizlet : une application web éducative pour apprendre avec des 
 
 ## Installation
 
+### Méthode 1 : Application fullstack (recommandée pour déploiement)
+
 1. **Cloner le dépôt**
 
    ```bash
-   git clone gh repo clone Pinpin0909/guizlet
-   cd quizlet-local-clone
+   git clone https://github.com/Pinpin0909/guizlet-fake-quizlet.git
+   cd guizlet-fake-quizlet
+   ```
+
+2. **Construire et lancer l'application**
+
+   ```bash
+   npm run build    # Construit le frontend React
+   npm start        # Lance le serveur fullstack
+   ```
+
+3. Accéder à [http://localhost:3000](http://localhost:3000)
+
+### Méthode 2 : Développement séparé (frontend + backend)
+
+1. **Cloner le dépôt**
+
+   ```bash
+   git clone https://github.com/Pinpin0909/guizlet-fake-quizlet.git
+   cd guizlet-fake-quizlet/quizlet-local-clone
    ```
 
 2. **Installer les dépendances**
 
    ```bash
+   # Backend
+   cd server
    npm install
 
-3. **Lancer l'application**
+   # Frontend
+   cd ../client
+   npm install
+   ```
+
+3. **Lancer l'application en mode développement**
 
    ```bash
    # Terminal 1 : lancer le backend
    cd server
    npm start
 
-4. Accéder à [http://localhost:3000)
+   # Terminal 2 : lancer le frontend
+   cd ../client
+   npm run dev
+   ```
 
-**OU**
+4. Accéder à [http://localhost:5173](http://localhost:5173) (dev) ou [http://localhost:3000](http://localhost:3000) (prod)
 
-1. **Executer QuizletLocalCloneSetup.exe**
+## Déploiement
 
-2. **Installer les dépendances**
+Cette application est configurée pour le déploiement sur [Render.com](https://render.com) grâce au fichier `render.yaml` à la racine du projet.
 
-   ```bash
-   npm install
-
-3. **Executé le racourci bureau**
+Le déploiement utilisera automatiquement :
+- `npm run build` pour construire le frontend
+- `npm start` pour lancer le serveur fullstack
 
 ## Structure du projet
 
